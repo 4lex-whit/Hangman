@@ -1,6 +1,6 @@
 import random
 
-VERSION = "v1.0.1"
+VERSION = "v1.0.2"
 
 STAGES = ["""┌──┐
 │
@@ -60,6 +60,9 @@ class Hangman():
         return hiddenWord
 
     def getGuess(self):
+        print()
+        print(self.getHiddenWord())
+        
         guess = input("> ")
         if guess.isalpha() != True:
             print("You can only guess letters")
@@ -90,11 +93,10 @@ class Hangman():
         print(f"""┌──────────────────┐
 │ Hangman │ {VERSION} │
 │ By alex_whit     │
-└──────────────────┘\n""")
+└──────────────────┘""")
         self.setNewWord()
 
         while self.isGameOver() != True:
-            print(self.getHiddenWord())
             self.checkGuess(self.getGuess())
             print()
 
