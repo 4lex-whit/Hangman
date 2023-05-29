@@ -1,5 +1,7 @@
 import random
 
+VERSION = "v1.0.1"
+
 STAGES = ["""┌──┐
 │
 │
@@ -85,7 +87,10 @@ class Hangman():
             self.getIncorrectGuesses().append(guess)
     
     def main(self):
-        print("┌──────────────────────────┐\n│ Hangman By Alex Whitaker │\n└──────────────────────────┘\n")
+        print(f"""┌──────────────────┐
+│ Hangman │ {VERSION} │
+│ By alex_whit     │
+└──────────────────┘\n""")
         self.setNewWord()
 
         while self.isGameOver() != True:
