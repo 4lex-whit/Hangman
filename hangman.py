@@ -1,6 +1,6 @@
 import random
 
-VERSION = "v1.0.2"
+VERSION = "v2.0.0"
 
 STAGES = ["""┌──┐
 │
@@ -34,14 +34,35 @@ STAGES = ["""┌──┐
 
 class Hangman():
     def __init__(self):
+        self.__wordLength = None
         self.__word = None
         self.__correctGuesses = []
         self.__incorrectGuesses = []
     
+    def getWordLength(self):
+        return self.__wordLength
+    def setWordLength(self):
+        print("""┌──────────────────┐
+│ Word Length      │
+├───┬──────────────┤
+│ 1 │ Short        │
+│ 2 │ Medium       │
+│ 3 │ Long         │
+└───┴──────────────┘""")
+        choice = input("> ")
+
+        if choice == "1": self.__wordLength = "short"
+        elif choice == "2": self.__wordLength = "medium"
+        elif choice == "3": self.__wordLength = "long"
+        else:
+            print("Please enter a valid option\n")
+            self.setWordLength()
+
     def getWord(self):
         return self.__word
     def setNewWord(self):
-        wordsLines = open("words.txt", "r").readlines()
+        self.setWordLength()
+        wordsLines = open(f"words-{self.getWordLength()}.txt", "r").readlines()
         self.__word = wordsLines[random.randint(0, len(wordsLines) - 1)].replace("\n", "")
 
     def getCorrectGuesses(self):
