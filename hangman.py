@@ -1,6 +1,6 @@
 import random
 
-VERSION = "v2.0.1"
+VERSION = "v2.0.2"
 
 STAGES = ["""┌──┐
 │
@@ -119,10 +119,9 @@ class Hangman():
 
         while self.isGameOver() != True:
             self.checkGuess(self.getGuess())
-            print()
-
+            
             if len(self.getIncorrectGuesses()) != 0:
-                print(f"{STAGES[len(self.getIncorrectGuesses()) - 1]}")
+                print(f"\n{STAGES[len(self.getIncorrectGuesses()) - 1]}")
 
         print("Game Over")
         print(f"The word was: {self.getWord()}")
